@@ -1,5 +1,5 @@
 <script setup>
-import MyBtn from '../components/UI/MyBtn.vue';
+import AppBtn from './UI/AppBtn.vue';
 import { useStartProject } from '../stores/startProject.js';
 
 const store = useStartProject();
@@ -9,8 +9,8 @@ const store = useStartProject();
 <template>
   <header class="header">
     <div class="header__inner">
-     <h1 v-if="store.show" class="header__title">Welcom</h1>
-    <MyBtn @click="store.openShow()" class="header__btn">Get Start</MyBtn>
+     <h1 class="header__title">Welcom</h1>
+    <AppBtn @click="store.openShow()" class="header__btn">Get Start</AppBtn>
     </div>
   </header>
 </template>

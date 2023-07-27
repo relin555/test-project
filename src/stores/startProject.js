@@ -4,13 +4,12 @@ export const useStartProject = defineStore( 'start', {
   state: () =>
   {
     return {
-     show:true
+      show: false,
    }
  }
   ,
-  getters: {
-    openShow: ( state ) =>
-    {
+  actions: {
+    openShow(){
       this.show = !this.show
     } 
   }
