@@ -1,11 +1,16 @@
 <script setup>
 import { RouterView } from 'vue-router';
-import HeaderComponent from './components/HeaderComponent.vue'
+import HeaderComponent from './components/HeaderComponent.vue';
+import FooterComponent from './components/FooterComponent.vue'
 </script>
 
 <template>
-  <HeaderComponent />
-  <RouterView />
+  <div class="app">
+    <HeaderComponent />
+    <RouterView />
+    <FooterComponent/>
+  </div>
+  
 </template>
 
 <style>
@@ -19,6 +24,10 @@ import HeaderComponent from './components/HeaderComponent.vue'
 body{
   max-width: 1920px;
   padding: 0 60px;
+  height: 100%;
+}
+li  {
+  list-style-type: none;
 }
 a {
   list-style-type: none;
@@ -27,6 +36,12 @@ a {
   font-style: normal;
   font-weight: 600;
   line-height: 20px; 
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 }
 .conteiner{
   padding: 0 128px;
