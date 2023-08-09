@@ -1,0 +1,44 @@
+{
+  "ingridients": [
+    {
+      "ingridient": "cutlet",
+      "img": "cutlet",
+      "count": 0
+    },
+    {
+      "ingridient": "mayo",
+      "img": "mayo",
+      "count": 0
+    },
+    {
+      "ingridient": "onion",
+      "img": "onion",
+      "count": 0
+    },
+    {
+      "ingridient": "tomato",
+      "img": "tomato",
+      "count": 0
+    },
+    {
+      "ingridient": "cucumber",
+      "img": "cucumber",
+      "count": 0
+    },
+    {
+      "ingridient": "cheese",
+      "img": "cheese",
+      "count": 0
+    },
+    {
+      "ingridient": "salad",
+      "img": "salad",
+      "count": 0
+    },
+    {
+      "ingridient": "bun",
+      "img": "bun",
+      "count": 0
+    }
+  ]
+}

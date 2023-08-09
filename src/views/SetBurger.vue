@@ -1,9 +1,23 @@
 <script setup>
-  import MyBtn from '../components/UI/MyBtn.vue'
+import MyBtn from '../components/UI/MyBtn.vue';
+import { useIngridientsStore } from '../stores/startProject';
+
+const ingridientsStore = useIngridientsStore();
+ingridientsStore.fill();
+
+function imgIngridient( img )
+{
+  return new URL( `../assets/ingredients/${ img }.svg`, import.meta.url ).href
+};
+function titleIngredient (word)
+{
+  return word[0].toUpperCase() + word.substring(1).toLowerCase() 
+};
+
 </script>
 
 <template>
-  <mian class="set-burger conteiner">
+  <div class="set-burger conteiner">
     <section class="set-burger__inner">
       <div class="set-burger__top-content">
         <h1 class="set-burger__title">Make<br/> Your<br/> Burger</h1>
@@ -45,20 +59,26 @@
       <div class="set-burger__bottom-content">
         <div class="set-burger__items-wrapper">
           <ul class="set-burger__items-card">
-            <li class="set-burger__item-card">
-              <img src="" alt="" class="set-burger__item-img">
-              <h4 class="set-burger__item-title"></h4>
+            <li class="set-burger__item-card" 
+              v-for="ingridient in ingridientsStore.ingridients" 
+              :key="ingridient.ingridient">
+              <img class="set-burger__item-img" :src="imgIngridient(ingridient.img)" alt="">
+              <h4 class="set-burger__item-title">{{ titleIngredient(ingridient.ingridient) }}</h4>
               <div class="set-burger__item-counter-wrapper">
-                <MyBtn class="set-burger__item-btn">-</MyBtn>
-                <span class="set-burger__item-count">{{  }}</span>
-                <MyBtn class="set-burger__item-btn">+</MyBtn>
+                <MyBtn class="set-burger__item-btn">
+                  <img src="../assets/iconBtn/minus.svg" alt="">
+                </MyBtn>
+                <p class="set-burger__item-count"><span>{{ ingridient.count }}</span></p>
+                <MyBtn class="set-burger__item-btn">
+                  <img src="../assets/iconBtn/plus.svg" alt="">
+                </MyBtn>
               </div>
             </li>
           </ul>
         </div>
       </div>
     </section>
-  </mian>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -71,6 +91,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 71px;
   }
   &__title  {
     font-size: 72px;
@@ -154,6 +175,62 @@
   }
   &__summery-items > img {
     margin-right: 8px;
+  }
+  &__bottom-content {
+    padding-left: 92px;
+    padding-right: 108px;
+  }
+  &__items-card {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item-card  {
+    display: flex;
+    flex-direction: column;
+    padding: 23px 17px;
+    border-radius: 32px;
+    border: 1px solid var(--primary-black-squeeze, #F0F7FA);
+    background: var(--primary-white, #FFF);
+  }
+  &__item-img {
+    margin-bottom: 12px;
+    width: 104px;
+    height: 59px;
+  }
+  &__item-title {
+    color: var(--primary-black, #1F2939);
+    text-align: center;
+    /* font-14/semi */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 12px; 
+  }
+  &__item-counter-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__item-btn {
+    border-radius: 99px;
+    background: var(--primary-titan-white, #F5F5FF);
+    display: flex;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+  }
+  &__item-btn > img {
+    height: 16px;
+    width: 16px;
+  }
+  &__item-count {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--primary-black, #1F2939);
+    text-align: center;
   }
  }
 </style>
